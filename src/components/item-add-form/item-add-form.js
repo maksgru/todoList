@@ -31,7 +31,7 @@ export default class ItemAddForm extends Component {
           placeholder="What needs to be done?"
           value={this.state.label}
         />
-        <button type="submit" className="btn btn-outline-secondary text-nowrap">Add Item</button>
+        <button type="submit" className="btn btn-outline-secondary text-nowrap" disabled={!this.state.label.trim()}>Add Item</button>
       </form>
     );
   }
