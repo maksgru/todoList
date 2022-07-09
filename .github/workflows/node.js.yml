@@ -19,22 +19,18 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-      env:
-        KEY: ${{ secrets.GITHUB_TOKEN }}
 
     # Runs a set of commands using the runners shell
-    - name: log
-      run: echo key is ${{ secrets }}
-    # - name: Run install
-    #   run: npm install    
-    # - name: Run build
-    #   run: npm run build
+    - name: Run install
+      run: npm install    
+    - name: Run build
+      run: npm run build
 
-    # - name: copy file via ssh password
-    #   uses: appleboy/scp-action@master
-    #   with:
-    #     host: ${{ secrets.todo.HOST }}
-    #     username: ${{ secrets.todo.USERNAME }}
-    #     key: ${{ secrets.todo.SSH_KEY }}
-    #     source: "build"
-    #     target: "apps/jobspurifier-front"
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.todo.HOST }}
+        username: ${{ secrets.todo.USERNAME }}
+        key: ${{ secrets.todo.SSH_KEY }}
+        source: "build"
+        target: "apps/jobspurifier-front"
