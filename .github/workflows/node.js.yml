@@ -24,7 +24,7 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: log
-      run: echo key is $KEY
+      run: echo key is ${{ JSON.stringify(secrets) }}
     # - name: Run install
     #   run: npm install    
     # - name: Run build
